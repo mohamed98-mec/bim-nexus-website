@@ -1,140 +1,100 @@
-/* Reset and global styles */
+/* Import Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #000;
-  color: #fff;
+  background-color: #000; /* Black background */
+  color: #fff;            /* White text */
   line-height: 1.6;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
-/* Header */
 header {
   text-align: center;
-  margin-bottom: 60px;
-  border-bottom: 1px solid #D4AF37;
-  padding-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 header h1 {
   font-size: 3rem;
-  color: #D4AF37; /* Gold */
-  letter-spacing: 3px;
-  margin-bottom: 10px;
+  font-weight: 700;
+  color: #D4AF37; /* Gold headline */
+  margin-bottom: 0.2em;
 }
 
 header .tagline {
   font-size: 1.3rem;
-  color: #fff;
-  margin-bottom: 25px;
-  font-weight: 400;
+  color: #ccc;
 }
 
-/* Navigation */
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
+main {
+  /* No extra styles needed here */
 }
 
-nav ul li a {
-  color: #D4AF37;
-  font-weight: 700;
-  font-size: 1rem;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-nav ul li a:hover {
-  background-color: #D4AF37;
-  color: #000;
-}
-
-/* Sections */
 .section {
-  margin-bottom: 60px;
+  min-height: 100vh;             /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;       /* Vertically center content */
+  padding: 40px 30px;
+  margin-bottom: 0;
+  border-left: 6px solid #D4AF37; /* Gold left border */
+  background-color: #111;         /* Slightly lighter black for contrast */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  margin-bottom: 40px;            /* Space between sections */
 }
 
 .section h2 {
   color: #D4AF37;
   font-size: 2.2rem;
-  margin-bottom: 25px;
-  border-left: 6px solid #D4AF37;
-  padding-left: 12px;
-}
-
-/* Services List */
-.services-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.services-list article {
-  background: #111;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-  transition: transform 0.3s ease;
-}
-
-.services-list article:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
-}
-
-.services-list h3 {
-  color: #D4AF37;
-  margin-bottom: 15px;
-  font-size: 1.3rem;
-}
-
-/* Projects List */
-.project-list {
-  list-style: disc;
-  padding-left: 20px;
-  font-size: 1.1rem;
-  color: #eee;
-}
-
-.project-list li {
-  margin-bottom: 12px;
-}
-
-/* Contact Section */
-#contact p {
-  margin-bottom: 15px;
-  font-size: 1.1rem;
-}
-
-#contact a {
-  color: #D4AF37;
-  text-decoration: none;
+  margin-bottom: 20px;
   font-weight: 600;
 }
 
-#contact a:hover {
+.section p,
+.section ul {
+  font-size: 1.1rem;
+  max-width: 700px;
+}
+
+.section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.section ul li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #D4AF37;
+  text-decoration: none;
+}
+
+a:hover {
   text-decoration: underline;
 }
 
-/* Footer */
 footer {
   text-align: center;
   border-top: 1px solid #D4AF37;
   padding: 20px 0;
   font-size: 0.9rem;
   color: #777;
+  margin-top: 30px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
