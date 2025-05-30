@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BIM NEXUS - Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <title>BIM NEXUS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -12,106 +12,158 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       font-family: 'Roboto', sans-serif;
-      background-color: #0c0c0c;
-      color: #ffffff;
-      scroll-snap-type: y mandatory;
-      overflow-y: scroll;
+      scroll-behavior: smooth;
+      color: #111;
+      background: #fff;
     }
 
-    .section {
-      height: 100vh;
-      scroll-snap-align: start;
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      z-index: 999;
+      padding: 20px 40px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: space-around;
-      flex-direction: row;
-      padding: 40px;
+      border-bottom: 1px solid #eee;
     }
 
-    .section:nth-child(even) {
-      flex-direction: row-reverse;
-      background-color: #121212;
+    header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0077cc;
     }
 
-    .section img {
-      width: 500px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    .content {
-      max-width: 500px;
+    nav a:hover {
+      color: #0077cc;
     }
 
-    h1 {
-      font-size: 3rem;
-      color: #007bff;
-      margin-bottom: 1rem;
+    section {
+      height: 100vh;
+      padding: 100px 40px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      border-bottom: 1px solid #eee;
     }
 
-    h2 {
-      font-size: 2rem;
-      color: #f0c040;
-      margin-bottom: 0.5rem;
+    section h2 {
+      font-size: 36px;
+      color: #0077cc;
+      margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1.1rem;
+    section p {
+      max-width: 600px;
+      font-size: 18px;
       line-height: 1.6;
-      color: #e0e0e0;
+    }
+
+    .image-section {
+      display: flex;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .image-section img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border: 2px solid #ddd;
+      border-radius: 8px;
     }
 
     footer {
-      padding: 20px;
       text-align: center;
-      background: #0c0c0c;
-      color: #666;
-      font-size: 0.9rem;
+      padding: 20px;
+      background: #f8f8f8;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .image-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-section img {
+        width: 100%;
+        max-width: 90%;
+        height: auto;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>BIM NEXUS</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <section class="section">
-    <div class="content">
-      <h1>BIM NEXUS</h1>
-      <h2>3D Modeling</h2>
-      <p>High-precision 3D BIM modeling services for mechanical, electrical, and plumbing systems using Revit and Navisworks.</p>
-    </div>
-    <img src="images/3d-modeling.jpg" alt="3D Modeling">
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are a leading BIM services provider offering cutting-edge solutions in 3D Modeling, Clash Detection, Coordination, and BIM-based Shop Drawings. We help streamline your project delivery with precision and collaboration.</p>
   </section>
 
-  <section class="section">
-    <div class="content">
-      <h2>Clash Detection</h2>
-      <p>We perform thorough clash detection to resolve conflicts between architectural, structural, and MEP systems before construction.</p>
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>Explore our comprehensive BIM services designed for MEP and architectural teams:</p>
+    <div class="image-section">
+      <img src="images/3d-modeling.jpg" alt="3D Modeling" />
+      <img src="images/clash-detection.jpg" alt="Clash Detection" />
+      <img src="images/shop-drawings.jpg" alt="Shop Drawings" />
+      <img src="images/mep-coordination.jpg" alt="MEP Coordination" />
     </div>
-    <img src="images/clash-detection.jpg" alt="Clash Detection">
   </section>
 
-  <section class="section">
-    <div class="content">
-      <h2>Shop Drawings</h2>
-      <p>Accurate shop drawings prepared according to project standards, helping contractors build confidently and efficiently.</p>
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>We’ve worked on high-profile projects across the Gulf region, delivering BIM excellence from concept to construction.</p>
+    <div class="image-section">
+      <img src="images/project1.jpg" alt="Project 1" />
+      <img src="images/project2.jpg" alt="Project 2" />
+      <img src="images/project3.jpg" alt="Project 3" />
     </div>
-    <img src="images/shop-drawings.jpg" alt="Shop Drawings">
   </section>
 
-  <section class="section">
-    <div class="content">
-      <h2>MEP Coordination</h2>
-      <p>Seamless coordination across all disciplines using BIM tools, ensuring optimal routing and installation on-site.</p>
-    </div>
-    <img src="images/mep-coordination.jpg" alt="MEP Coordination">
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:contact@bimnexus.com">contact@bimnexus.com</a></p>
+    <p>Phone: +123 456 7890</p>
   </section>
 
   <footer>
     &copy; 2025 BIM NEXUS. All rights reserved.
   </footer>
-
 </body>
 </html>
