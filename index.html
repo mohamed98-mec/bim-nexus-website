@@ -15,8 +15,9 @@
     html, body {
       font-family: 'Roboto', sans-serif;
       scroll-behavior: smooth;
-      color: #111;
-      background: #fff;
+      color: #eee; /* نص أبيض فاتح */
+      background: #121212; /* خلفية سوداء قاتمة */
+      min-height: 100vh;
     }
 
     header {
@@ -24,31 +25,36 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: #fff;
+      background: #1a1a1a;
       z-index: 999;
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #333;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
     header h1 {
       font-size: 22px;
       font-weight: 700;
-      color: #0077cc;
+      color: #bfa34a; /* ذهبي */
+      letter-spacing: 2px;
     }
 
     nav a {
       margin-left: 20px;
       text-decoration: none;
-      color: #333;
+      color: #eee;
       font-weight: 500;
-      transition: color 0.3s;
+      transition: color 0.3s, border-bottom 0.3s;
+      font-size: 16px;
+      padding-bottom: 4px;
     }
 
-    nav a:hover {
-      color: #0077cc;
+    nav a:hover, nav a.active {
+      color: #bfa34a; /* ذهبي */
+      border-bottom: 2px solid #bfa34a;
     }
 
     section {
@@ -58,19 +64,22 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #333;
     }
 
     section h2 {
       font-size: 36px;
-      color: #0077cc;
+      color: #bfa34a; /* ذهبي */
       margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
     }
 
     section p {
       max-width: 600px;
       font-size: 18px;
       line-height: 1.6;
+      color: #ccc;
     }
 
     .image-section {
@@ -84,16 +93,32 @@
       width: 300px;
       height: 200px;
       object-fit: cover;
-      border: 2px solid #ddd;
+      border: 2px solid #333;
       border-radius: 8px;
+      box-shadow: 0 0 10px #bfa34a;
+      transition: transform 0.3s ease;
+    }
+
+    .image-section img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #bfa34a;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: #f8f8f8;
+      background: #1a1a1a;
       font-size: 14px;
-      color: #777;
+      color: #666;
+    }
+
+    a {
+      color: #bfa34a;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
@@ -112,8 +137,7 @@
       }
 
       .image-section img {
-        width: 100%;
-        max-width: 90%;
+        width: 90%;
         height: auto;
       }
     }
@@ -123,7 +147,7 @@
   <header>
     <h1>BIM NEXUS</h1>
     <nav>
-      <a href="#about">About</a>
+      <a href="#about" class="active">About</a>
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
@@ -165,5 +189,28 @@
   <footer>
     &copy; 2025 BIM NEXUS. All rights reserved.
   </footer>
+
+  <script>
+    // Active nav link switching on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
