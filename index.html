@@ -6,7 +6,7 @@
   <title>BIM NEXUS - BIM Engineering</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
-    /* Basic Reset */
+    /* Reset */
     * {
       box-sizing: border-box;
       margin: 0; padding: 0;
@@ -19,20 +19,46 @@
       overflow-x: hidden;
     }
 
-    /* Container holds everything */
     .container {
       max-width: 900px;
       margin: 0 auto;
+      padding-top: 140px; /* space for pinned header + nav */
     }
 
-    /* Nav Tabs */
+    /* Pinned header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #111;
+      padding: 20px 30px 10px 30px;
+      border-bottom: 2px solid #D4AF37;
+      z-index: 110;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(212,175,55,0.6);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #D4AF37;
+      margin-bottom: 6px;
+      font-weight: 700;
+      user-select: none;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #eee;
+      user-select: none;
+    }
+
+    /* Nav below header */
     nav {
-      display: flex;
+      position: fixed;
+      top: 90px;  /* below header */
+      left: 0; right: 0;
       background: #111;
       border-bottom: 2px solid #D4AF37;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      display: flex;
+      z-index: 105;
+      box-shadow: 0 2px 6px rgba(212,175,55,0.4);
     }
     nav button {
       flex: 1;
@@ -44,6 +70,7 @@
       font-size: 1.1rem;
       font-weight: 500;
       transition: background 0.3s, color 0.3s;
+      user-select: none;
     }
     nav button:hover {
       background: #222;
@@ -55,39 +82,39 @@
       font-weight: 700;
     }
 
-    /* Each section fills the viewport */
+    /* Sections full viewport minus header/nav height */
     section {
-      height: 100vh;
-      padding: 60px 30px 30px 30px;
+      min-height: calc(100vh - 140px); /* viewport minus header + nav */
+      padding: 30px 30px 30px 30px;
       border-left: 6px solid #D4AF37;
       background-color: #111;
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-      display: none; /* hide all by default */
+      display: none; /* hide by default */
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
+      overflow-y: auto;
+      scroll-behavior: smooth;
     }
-
     section.active {
-      display: flex; /* show active section */
+      display: flex;
     }
 
-    h1, h2 {
+    h2 {
       color: #D4AF37;
       margin-bottom: 20px;
+      user-select: none;
     }
-
     p, ul {
       font-size: 1.1rem;
       line-height: 1.6;
       max-width: 700px;
       color: #eee;
+      user-select: text;
     }
-
     ul {
       list-style-type: disc;
       padding-left: 20px;
     }
-
     a {
       color: #D4AF37;
       text-decoration: none;
@@ -103,19 +130,24 @@
       font-size: 0.9rem;
       border-top: 1px solid #D4AF37;
       margin-top: 20px;
+      user-select: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <nav>
-      <button class="tab-btn active" data-target="about">About Us</button>
-      <button class="tab-btn" data-target="services">Services</button>
-      <button class="tab-btn" data-target="contact">Contact</button>
-    </nav>
+  <header>
+    <h1>BIM NEXUS</h1>
+    <p>Your trusted partner in BIM Engineering</p>
+  </header>
 
+  <nav>
+    <button class="tab-btn active" data-target="about">About Us</button>
+    <button class="tab-btn" data-target="services">Services</button>
+    <button class="tab-btn" data-target="contact">Contact</button>
+  </nav>
+
+  <div class="container">
     <section id="about" class="active">
-      <h1>BIM NEXUS</h1>
       <h2>About Us</h2>
       <p>
         At BIM NEXUS, we provide professional BIM services including 3D modeling, coordination, shop drawings, and project management.
@@ -146,20 +178,15 @@
   </div>
 
   <script>
-    // JS to handle tab switching
     const tabs = document.querySelectorAll('nav button');
     const sections = document.querySelectorAll('section');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // Remove active class from all buttons
         tabs.forEach(t => t.classList.remove('active'));
-        // Add active to clicked button
         tab.classList.add('active');
 
-        // Hide all sections
         sections.forEach(sec => sec.classList.remove('active'));
-        // Show selected section
         const target = tab.getAttribute('data-target');
         document.getElementById(target).classList.add('active');
       });
