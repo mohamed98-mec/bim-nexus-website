@@ -5,45 +5,165 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BIM NEXUS - BIM Engineering</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;  /* Black */
+      color: #fff;             /* White */
+      overflow-x: hidden;
+    }
+
+    /* Container holds everything */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Nav Tabs */
+    nav {
+      display: flex;
+      background: #111;
+      border-bottom: 2px solid #D4AF37;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav button {
+      flex: 1;
+      padding: 15px;
+      background: none;
+      border: none;
+      color: #ccc;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav button:hover {
+      background: #222;
+      color: #D4AF37;
+    }
+    nav button.active {
+      background: #D4AF37;
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* Each section fills the viewport */
+    section {
+      height: 100vh;
+      padding: 60px 30px 30px 30px;
+      border-left: 6px solid #D4AF37;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      display: none; /* hide all by default */
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    section.active {
+      display: flex; /* show active section */
+    }
+
+    h1, h2 {
+      color: #D4AF37;
+      margin-bottom: 20px;
+    }
+
+    p, ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 700px;
+      color: #eee;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    a {
+      color: #D4AF37;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid #D4AF37;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <header>
+    <nav>
+      <button class="tab-btn active" data-target="about">About Us</button>
+      <button class="tab-btn" data-target="services">Services</button>
+      <button class="tab-btn" data-target="contact">Contact</button>
+    </nav>
+
+    <section id="about" class="active">
       <h1>BIM NEXUS</h1>
-      <p class="tagline">Your trusted partner in BIM Engineering</p>
-    </header>
+      <h2>About Us</h2>
+      <p>
+        At BIM NEXUS, we provide professional BIM services including 3D modeling, coordination, shop drawings, and project management.
+        We aim to bring innovation, accuracy, and efficiency to every project we undertake.
+      </p>
+    </section>
 
-    <main>
-      <section id="about" class="section">
-        <h2>About Us</h2>
-        <p>
-          At BIM NEXUS, we provide professional BIM services including 3D modeling, coordination, shop drawings, and project management. 
-          We aim to bring innovation, accuracy, and efficiency to every project we undertake.
-        </p>
-      </section>
+    <section id="services">
+      <h2>Our Services</h2>
+      <ul>
+        <li>3D BIM Modeling for HVAC, Plumbing, and Firefighting Systems</li>
+        <li>Clash Detection and Coordination</li>
+        <li>Shop Drawings and Construction Documentation</li>
+        <li>Project Management and BIM Workflow Optimization</li>
+        <li>Consultation and Technical Support</li>
+      </ul>
+    </section>
 
-      <section id="services" class="section">
-        <h2>Our Services</h2>
-        <ul>
-          <li>3D BIM Modeling for HVAC, Plumbing, and Firefighting Systems</li>
-          <li>Clash Detection and Coordination</li>
-          <li>Shop Drawings and Construction Documentation</li>
-          <li>Project Management and BIM Workflow Optimization</li>
-          <li>Consultation and Technical Support</li>
-        </ul>
-      </section>
-
-      <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:contact@bimnexus.com">contact@bimnexus.com</a></p>
-        <p>Phone: +123 456 7890</p>
-      </section>
-    </main>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:contact@bimnexus.com">contact@bimnexus.com</a></p>
+      <p>Phone: +123 456 7890</p>
+    </section>
 
     <footer>
       <p>&copy; 2025 BIM NEXUS. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    // JS to handle tab switching
+    const tabs = document.querySelectorAll('nav button');
+    const sections = document.querySelectorAll('section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all buttons
+        tabs.forEach(t => t.classList.remove('active'));
+        // Add active to clicked button
+        tab.classList.add('active');
+
+        // Hide all sections
+        sections.forEach(sec => sec.classList.remove('active'));
+        // Show selected section
+        const target = tab.getAttribute('data-target');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
