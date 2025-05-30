@@ -3,157 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BIM NEXUS – BIM Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <title>BIM NEXUS - Engineering Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      display: flex;
+      margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #0f172a;
-      color: #e2e8f0;
+      background-color: #f5f7fa;
+      color: #1a1a1a;
     }
 
-    /* Sidebar */
-    nav {
-      width: 220px;
-      background-color: #1e293b;
-      padding: 30px 20px;
-      height: 100vh;
+    header {
       position: fixed;
       top: 0;
-      left: 0;
+      width: 100%;
+      background-color: #0d1b2a;
+      color: gold;
+      padding: 15px 30px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    nav h1 {
-      color: #3b82f6;
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-      text-align: center;
+    header h1 {
+      margin: 0;
+      font-size: 24px;
     }
 
     nav a {
-      display: block;
-      color: #cbd5e1;
-      padding: 12px;
-      margin: 10px 0;
+      color: gold;
       text-decoration: none;
-      border-radius: 6px;
-      transition: background 0.3s;
+      margin-left: 20px;
+      font-weight: bold;
+      font-size: 14px;
     }
 
     nav a:hover {
-      background-color: #334155;
-      color: #3b82f6;
-    }
-
-    /* Main Content */
-    main {
-      margin-left: 240px;
-      padding: 40px 30px;
-      width: calc(100% - 240px);
-      scroll-behavior: smooth;
+      text-decoration: underline;
     }
 
     section {
-      padding: 60px 0;
-      border-bottom: 1px solid #334155;
+      padding: 100px 20px 60px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      scroll-margin-top: 80px;
     }
 
-    section:last-child {
-      border-bottom: none;
-    }
-
-    h2 {
-      color: #3b82f6;
-      font-size: 1.8rem;
+    section h2 {
+      color: #005f99;
       margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #e2e8f0;
+    section p {
       max-width: 800px;
+      text-align: center;
+      font-size: 16px;
     }
 
-    .service {
-      margin-bottom: 40px;
+    .service-img {
+      width: 300px;
+      height: 180px;
+      object-fit: cover;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    .service h3 {
-      color: #60a5fa;
-      font-size: 1.3rem;
-      margin-bottom: 10px;
+    footer {
+      background-color: #0d1b2a;
+      color: gold;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
     }
 
-    .service p {
-      color: #cbd5e1;
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar Navigation -->
-  <nav>
+  <header>
     <h1>BIM NEXUS</h1>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#modeling">3D Modeling</a>
+      <a href="#clash">Clash Detection</a>
+      <a href="#shop">Shop Drawings</a>
+      <a href="#coordination">MEP Coordination</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <!-- Main Content -->
-  <main>
-    <section id="about">
-      <h2>About Us</h2>
-      <p>We are a BIM engineering firm offering advanced modeling, coordination, and project delivery solutions. Our team ensures technical accuracy, on-site coordination, and smooth digital transformation through BIM.</p>
-    </section>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      At BIM NEXUS, we provide high-quality BIM engineering services including 3D modeling,
+      clash detection, shop drawings, and MEP coordination. We deliver excellence through innovation.
+    </p>
+  </section>
 
-    <section id="services">
-      <h2>Services</h2>
+  <section id="modeling">
+    <h2>3D Modeling</h2>
+    <p>We create accurate, efficient 3D models for mechanical, plumbing, and HVAC systems, ensuring construction-ready detail.</p>
+    <img class="service-img" src="https://via.placeholder.com/300x180?text=3D+Modeling" alt="3D Modeling">
+  </section>
 
-      <div class="service">
-        <h3>3D Modeling</h3>
-        <p>Detailed BIM models for HVAC, firefighting, and plumbing systems with LOD 400 accuracy.</p>
-      </div>
+  <section id="clash">
+    <h2>Clash Detection</h2>
+    <p>We use tools like Navisworks to detect and resolve clashes before construction begins, saving time and cost.</p>
+    <img class="service-img" src="https://via.placeholder.com/300x180?text=Clash+Detection" alt="Clash Detection">
+  </section>
 
-      <div class="service">
-        <h3>Clash Detection</h3>
-        <p>Detect and resolve clashes between trades using Navisworks & Revit.</p>
-      </div>
+  <section id="shop">
+    <h2>Shop Drawings</h2>
+    <p>Our team prepares precise shop drawings from BIM models, customized to site conditions and construction standards.</p>
+    <img class="service-img" src="https://via.placeholder.com/300x180?text=Shop+Drawings" alt="Shop Drawings">
+  </section>
 
-      <div class="service">
-        <h3>Shop Drawings</h3>
-        <p>High-quality and coordinated shop drawings ready for site implementation.</p>
-      </div>
+  <section id="coordination">
+    <h2>MEP Coordination</h2>
+    <p>We coordinate MEP systems using BIM tools, integrating them seamlessly with architectural and structural models.</p>
+    <img class="service-img" src="https://via.placeholder.com/300x180?text=MEP+Coordination" alt="MEP Coordination">
+  </section>
 
-      <div class="service">
-        <h3>Revit Family Creation</h3>
-        <p>Custom Revit families based on real material submittals and manufacturer specs.</p>
-      </div>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:contact@bimnexus.com">contact@bimnexus.com</a></p>
+    <p>Phone: +123 456 7890</p>
+  </section>
 
-      <div class="service">
-        <h3>Project Coordination</h3>
-        <p>Seamless collaboration with architecture and structure to align all MEP elements.</p>
-      </div>
-
-      <div class="service">
-        <h3>As-Built Models</h3>
-        <p>Generate post-construction BIM reflecting on-site changes and redlines.</p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: contact@bimnexus.com</p>
-      <p>Phone: +123 456 7890</p>
-    </section>
-  </main>
+  <footer>
+    &copy; 2025 BIM NEXUS. All rights reserved.
+  </footer>
 
 </body>
 </html>
