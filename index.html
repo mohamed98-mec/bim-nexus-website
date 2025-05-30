@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,6 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-  /* Reset */
   * {
     margin: 0; padding: 0; box-sizing: border-box;
   }
@@ -15,17 +15,16 @@
   body, html {
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #000; /* solid black */
-    color: #d4af37; /* dark gold */
+    background-color: #000;
+    color: #d4af37;
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
 
-  /* Navbar */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    background-color: #111; /* very dark gray */
+    background-color: #111;
     height: 70px;
     display: flex;
     align-items: center;
@@ -48,7 +47,6 @@
     color: #fff;
   }
 
-  /* Section styling */
   .section {
     min-height: 100vh;
     padding: 120px 60px 60px;
@@ -94,45 +92,77 @@
     color: #fff;
   }
 
-  /* Service block */
-  .service-block {
+  /* Services special container */
+  #services .services-container {
+    display: flex;
+    flex-direction: row; /* horizontal layout */
+    gap: 40px;
+    justify-content: center;
+    max-width: 1200px;
     width: 100%;
-    margin-bottom: 60px;
+    margin-top: 40px;
+  }
+
+  .service-block {
+    flex: 1; /* evenly divide space */
+    background-color: #111;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 15px #d4af37cc;
   }
 
   .service-block h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 15px;
+    color: #d4af37;
   }
 
   .service-block p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     margin-bottom: 25px;
+    color: #ccc;
+    text-align: center;
   }
 
-  /* Image styling */
   .service-image {
     width: 100%;
-    max-width: 700px;
-    height: 400px;
+    max-width: 300px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 0 15px #d4af37cc;
-    display: block;
-    margin: 0 auto;
     transition: transform 0.3s ease;
   }
   .service-image:hover {
     transform: scale(1.05);
   }
 
-  /* Footer */
   footer {
     text-align: center;
     padding: 40px 20px;
     font-size: 1.1rem;
     color: #666;
     background-color: #111;
+  }
+
+  /* Responsive for smaller screens */
+  @media (max-width: 900px) {
+    #services .services-container {
+      flex-direction: column;
+      max-width: 90vw;
+    }
+
+    .service-block {
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+
+    nav {
+      font-size: 1.4rem;
+      gap: 30px;
+    }
   }
 </style>
 </head>
@@ -157,29 +187,30 @@
 
 <section id="services" class="section">
   <h2>Our Services</h2>
+  <div class="services-container">
+    <div class="service-block">
+      <h3>3D Modeling</h3>
+      <img src="images/modeling.jpg" alt="3D Modeling" class="service-image" />
+      <p>Creating accurate and detailed 3D models for MEP, Architectural, and Structural disciplines to support design and construction.</p>
+    </div>
 
-  <div class="service-block">
-    <h3>3D Modeling</h3>
-    <p>Creating accurate and detailed 3D models for MEP, Architectural, and Structural disciplines to support design and construction.</p>
-    <img src="images/modeling.jpg" alt="3D Modeling" class="service-image" />
-  </div>
+    <div class="service-block">
+      <h3>Clash Detection & Coordination</h3>
+      <img src="images/clash-detection.jpg" alt="Clash Detection" class="service-image" />
+      <p>Detecting clashes between disciplines early to avoid costly site issues and ensure smooth project coordination.</p>
+    </div>
 
-  <div class="service-block">
-    <h3>Clash Detection & Coordination</h3>
-    <p>Detecting clashes between disciplines early to avoid costly site issues and ensure smooth project coordination.</p>
-    <img src="images/clash-detection.jpg" alt="Clash Detection" class="service-image" />
-  </div>
+    <div class="service-block">
+      <h3>Shop Drawings Preparation</h3>
+      <img src="images/shop-drawings.jpg" alt="Shop Drawings" class="service-image" />
+      <p>Preparing detailed shop drawings that comply with project specifications for fabrication and installation.</p>
+    </div>
 
-  <div class="service-block">
-    <h3>Shop Drawings Preparation</h3>
-    <p>Preparing detailed shop drawings that comply with project specifications for fabrication and installation.</p>
-    <img src="images/shop-drawings.jpg" alt="Shop Drawings" class="service-image" />
-  </div>
-
-  <div class="service-block">
-    <h3>MEP Coordination & Project Management</h3>
-    <p>Coordinating between disciplines and managing BIM workflows to ensure project success and timely delivery.</p>
-    <img src="images/coordination.jpg" alt="MEP Coordination" class="service-image" />
+    <div class="service-block">
+      <h3>MEP Coordination & Project Management</h3>
+      <img src="images/coordination.jpg" alt="MEP Coordination" class="service-image" />
+      <p>Coordinating between disciplines and managing BIM workflows to ensure project success and timely delivery.</p>
+    </div>
   </div>
 </section>
 
@@ -194,7 +225,6 @@
 </footer>
 
 <script>
-  // Smooth scroll and active tab switch
   const buttons = document.querySelectorAll('nav button');
   const sections = [...document.querySelectorAll('.section')];
 
@@ -207,7 +237,6 @@
     });
   });
 
-  // Update active button on scroll
   window.addEventListener('scroll', () => {
     let scrollPos = window.scrollY + 100;
     sections.forEach(section => {
