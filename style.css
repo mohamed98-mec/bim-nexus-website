@@ -1,77 +1,90 @@
-/* Reset some basics */
+/* Reset and base */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #000; /* black background */
-  color: #fff; /* white text */
-  line-height: 1.6;
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
   background-color: #000;
-  padding: 15px 0;
-  text-align: center;
-  border-bottom: 2px solid gold;
-  z-index: 1000;
+  color: #eee;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.header h1 {
-  color: gold;
+header {
+  background: black;
+  padding: 15px 30px;
+  border-bottom: 2px solid #bfa145; /* gold accent */
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  color: #bfa145; /* gold */
   font-weight: 700;
   font-size: 2rem;
+  margin-bottom: 5px;
 }
 
-.header p {
-  color: #d4af37; /* gold accent color */
-  font-weight: 500;
-  margin-top: 5px;
+header .tagline {
+  color: #ccc;
+  font-size: 1rem;
 }
 
+/* Tabs container */
 .tabs {
-  position: fixed;
-  top: 70px;
-  width: 100%;
-  background-color: #000;
   display: flex;
+  background: #111;
+  border-bottom: 2px solid #bfa145;
   justify-content: center;
-  border-bottom: 1px solid #444;
-  z-index: 999;
 }
 
-.tab-btn {
-  background: none;
-  border: none;
-  color: #bbb;
-  padding: 12px 20px;
-  cursor: pointer;
+.tab-button {
+  flex: 1;
+  padding: 12px 0;
   font-size: 1rem;
   font-weight: 600;
-  transition: color 0.3s ease;
+  color: #ccc;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  max-width: 150px;
+  text-align: center;
 }
 
-.tab-btn:hover {
-  color: gold;
+.tab-button:hover {
+  color: #bfa145;
 }
 
-.tab-btn.active {
-  color: gold;
-  border-bottom: 2px solid gold;
+.tab-button.active {
+  color: #bfa145;
+  border-bottom: 3px solid #bfa145;
+  font-weight: 700;
+  background: #222;
 }
 
+/* Main content */
+main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background: #111;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #bfa145;
+}
+
+/* Tab content sections */
 .tab-content {
-  padding: 120px 20px 40px; /* padding top to avoid fixed header + tabs */
-  max-width: 800px;
-  margin: auto;
-  min-height: 80vh; /* fill most of viewport height */
   display: none;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .tab-content.active {
@@ -79,19 +92,25 @@ body {
 }
 
 h2 {
-  color: gold;
-  margin-bottom: 20px;
+  color: #bfa145;
   font-weight: 700;
+  margin-bottom: 15px;
   font-size: 1.8rem;
 }
 
 p, ul {
+  color: #ddd;
   font-size: 1.1rem;
-  color: #ccc;
-  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 ul {
   list-style-type: disc;
   padding-left: 20px;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
