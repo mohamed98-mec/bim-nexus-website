@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BIM NEXUS - BIM Engineering</title>
+  <title>BIM NEXUS – BIM Services</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -13,200 +13,147 @@
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #1c1c1e;
-      color: #f5f5f5;
-      overflow: hidden;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #1c1c1e;
-      border-bottom: 2px solid #FFD700;
-      padding: 10px 20px;
-      text-align: center;
-      z-index: 1000;
-    }
-
-    header h1 {
-      color: #FFD700;
-      font-size: 1.8rem;
-    }
-
-    .tagline {
-      font-size: 1rem;
-      color: #aaa;
-    }
-
-    nav.tabs {
       display: flex;
-      justify-content: center;
-      background-color: #2c2c2e;
-      border-bottom: 2px solid #FFD700;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
+
+    /* Sidebar */
+    nav {
+      width: 220px;
+      background-color: #1e293b;
+      padding: 30px 20px;
+      height: 100vh;
       position: fixed;
-      top: 80px;
-      width: 100%;
-      z-index: 999;
-    }
-
-    .tab-button {
-      background: none;
-      border: none;
-      padding: 15px 20px;
-      font-size: 0.9rem;
-      color: #ccc;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .tab-button:hover,
-    .tab-button.active {
-      color: #FFD700;
-      border-bottom: 3px solid #FFD700;
-    }
-
-    main {
-      margin-top: 130px;
-      height: calc(100vh - 130px);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .tab-content {
-      position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 20px 40px;
-      overflow-y: auto;
-      display: none;
-      animation: fadeIn 0.5s ease-in-out;
     }
 
-    .tab-content.active {
+    nav h1 {
+      color: #3b82f6;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    nav a {
       display: block;
+      color: #cbd5e1;
+      padding: 12px;
+      margin: 10px 0;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #334155;
+      color: #3b82f6;
+    }
+
+    /* Main Content */
+    main {
+      margin-left: 240px;
+      padding: 40px 30px;
+      width: calc(100% - 240px);
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid #334155;
+    }
+
+    section:last-child {
+      border-bottom: none;
     }
 
     h2 {
-      color: #FFD700;
-      font-size: 1.6rem;
+      color: #3b82f6;
+      font-size: 1.8rem;
       margin-bottom: 20px;
     }
 
-    .service-block {
-      border: 1px solid #444;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      background-color: #2a2a2c;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-
-    .service-block h3 {
-      color: #FFD700;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-
-    .service-block p {
-      color: #ddd;
+    p {
       font-size: 1rem;
       line-height: 1.6;
+      color: #e2e8f0;
+      max-width: 800px;
     }
 
-    a {
-      color: #FFD700;
-      text-decoration: none;
+    .service {
+      margin-bottom: 40px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .service h3 {
+      color: #60a5fa;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .service p {
+      color: #cbd5e1;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>BIM NEXUS</h1>
-    <p class="tagline">Your trusted partner in BIM Engineering</p>
-  </header>
 
-  <nav class="tabs">
-    <button class="tab-button active" data-tab="about">About</button>
-    <button class="tab-button" data-tab="services">Services</button>
-    <button class="tab-button" data-tab="contact">Contact</button>
+  <!-- Sidebar Navigation -->
+  <nav>
+    <h1>BIM NEXUS</h1>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
   </nav>
 
+  <!-- Main Content -->
   <main>
-    <!-- ABOUT -->
-    <section id="about" class="tab-content active">
+    <section id="about">
       <h2>About Us</h2>
-      <p>At BIM NEXUS, we provide professional BIM services including 3D modeling, coordination, shop drawings, and project management. We aim to bring innovation, accuracy, and efficiency to every project we undertake.</p>
+      <p>We are a BIM engineering firm offering advanced modeling, coordination, and project delivery solutions. Our team ensures technical accuracy, on-site coordination, and smooth digital transformation through BIM.</p>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="tab-content">
-      <h2>Our Services</h2>
+    <section id="services">
+      <h2>Services</h2>
 
-      <div class="service-block">
-        <h3>1. 3D Modeling</h3>
-        <p>We provide detailed and accurate 3D models for HVAC, Firefighting, and Plumbing systems to enhance visualization and design clarity.</p>
+      <div class="service">
+        <h3>3D Modeling</h3>
+        <p>Detailed BIM models for HVAC, firefighting, and plumbing systems with LOD 400 accuracy.</p>
       </div>
 
-      <div class="service-block">
-        <h3>2. Clash Detection</h3>
-        <p>We use tools like Navisworks and Revit to detect and resolve interdisciplinary clashes early in the design process.</p>
+      <div class="service">
+        <h3>Clash Detection</h3>
+        <p>Detect and resolve clashes between trades using Navisworks & Revit.</p>
       </div>
 
-      <div class="service-block">
-        <h3>3. Shop Drawings</h3>
-        <p>Precise, coordinated shop drawings that are ready for execution on-site, based on BIM coordination results.</p>
+      <div class="service">
+        <h3>Shop Drawings</h3>
+        <p>High-quality and coordinated shop drawings ready for site implementation.</p>
       </div>
 
-      <div class="service-block">
-        <h3>4. Revit Family Creation</h3>
-        <p>Custom, parametric Revit families based on real-world product specifications for high-detail modeling and documentation.</p>
+      <div class="service">
+        <h3>Revit Family Creation</h3>
+        <p>Custom Revit families based on real material submittals and manufacturer specs.</p>
       </div>
 
-      <div class="service-block">
-        <h3>5. Project Coordination</h3>
-        <p>We coordinate between all trades to ensure MEP systems are seamlessly integrated with architectural and structural components.</p>
+      <div class="service">
+        <h3>Project Coordination</h3>
+        <p>Seamless collaboration with architecture and structure to align all MEP elements.</p>
       </div>
 
-      <div class="service-block">
-        <h3>6. As-Built Models</h3>
-        <p>We deliver LOD 400–500 models representing construction phase updates and field conditions, ensuring project lifecycle accuracy.</p>
+      <div class="service">
+        <h3>As-Built Models</h3>
+        <p>Generate post-construction BIM reflecting on-site changes and redlines.</p>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="tab-content">
+    <section id="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:contact@bimnexus.com">contact@bimnexus.com</a></p>
+      <p>Email: contact@bimnexus.com</p>
       <p>Phone: +123 456 7890</p>
     </section>
   </main>
 
-  <script>
-    const buttons = document.querySelectorAll('.tab-button');
-    const contents = document.querySelectorAll('.tab-content');
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
