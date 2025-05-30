@@ -3,251 +3,232 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BIM NEXUS - BIM Engineering</title>
+<title>BIM NEXUS - Services</title>
 <style>
+  /* الخطوط والألوان */
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #000; /* أسود صلب */
+    color: #b8860b; /* ذهب داكن */
   }
 
-  body, html {
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    background-color: #000;
-    color: #d4af37;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #111;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #b8860b;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
   }
 
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background-color: #111;
-    height: 70px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    z-index: 1000;
-    font-weight: 700;
-    font-size: 1.8rem;
+    gap: 20px;
   }
 
   nav button {
     background: none;
     border: none;
-    color: #d4af37;
+    color: #b8860b;
+    font-size: 18px;
+    font-weight: 500;
     cursor: pointer;
-    padding: 14px 22px;
-    transition: color 0.3s ease;
-  }
-  nav button:hover, nav button.active {
-    color: #fff;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
   }
 
-  .section {
-    min-height: 100vh;
-    padding: 120px 60px 60px;
-    max-width: 900px;
-    margin: 0 auto;
+  nav button:hover,
+  nav button.active {
+    background-color: #b8860b;
+    color: #000;
+    border-radius: 5px;
+  }
+
+  main {
+    padding-top: 80px; /* عشان الهيدر */
+    height: calc(100vh - 80px);
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  section {
+    min-width: 25%;
+    padding: 30px;
+    box-sizing: border-box;
+    border-left: 1px solid #b8860b;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
   }
 
-  h1, h2 {
-    color: #d4af37;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  h1 {
-    font-size: 3.5rem;
-  }
-  h2 {
-    font-size: 2.8rem;
+  section:first-child {
+    border-left: none;
   }
 
-  p, ul {
-    color: #ccc;
-    line-height: 1.8;
-    font-size: 1.4rem;
-    max-width: 700px;
-    text-align: center;
-    margin-bottom: 40px;
+  section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
 
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-  }
-
-  a {
-    color: #d4af37;
-    text-decoration: underline;
-  }
-  a:hover {
-    color: #fff;
-  }
-
-  /* Services special container */
-  #services .services-container {
-    display: flex;
-    flex-direction: row; /* horizontal layout */
-    gap: 40px;
-    justify-content: center;
-    max-width: 1200px;
+  section img {
     width: 100%;
-    margin-top: 40px;
-  }
-
-  .service-block {
-    flex: 1; /* evenly divide space */
-    background-color: #111;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 0 15px #d4af37cc;
-  }
-
-  .service-block h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #d4af37;
-  }
-
-  .service-block p {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
-    color: #ccc;
-    text-align: center;
-  }
-
-  .service-image {
-    width: 100%;
-    max-width: 300px;
-    height: 200px;
+    max-width: 250px;
     object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-  }
-  .service-image:hover {
-    transform: scale(1.05);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #b8860b;
   }
 
-  footer {
+  section p {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 300px;
     text-align: center;
-    padding: 40px 20px;
-    font-size: 1.1rem;
-    color: #666;
-    background-color: #111;
   }
 
-  /* Responsive for smaller screens */
-  @media (max-width: 900px) {
-    #services .services-container {
+  /* تصغير خطوط التبويبات على الشاشات الكبيرة */
+  @media (min-width: 1200px) {
+    nav button {
+      font-size: 20px;
+      padding: 10px 16px;
+    }
+  }
+
+  /* --- تهيئة الموبايل --- */
+  @media (max-width: 768px) {
+    nav button {
+      font-size: 22px;
+      padding: 12px 20px;
+    }
+
+    main {
       flex-direction: column;
-      max-width: 90vw;
+      height: auto;
+      overflow-x: hidden;
+      padding-bottom: 30px;
     }
 
-    .service-block {
+    section {
+      min-width: 100%;
+      border-left: none;
+      border-top: 1px solid #b8860b;
+      padding: 40px 20px;
+    }
+
+    section:first-child {
+      border-top: none;
+    }
+
+    section h2 {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    section p {
+      font-size: 18px;
       max-width: 100%;
-      margin-bottom: 30px;
     }
 
-    nav {
-      font-size: 1.4rem;
-      gap: 30px;
+    section img {
+      max-width: 90%;
+      margin: 0 auto;
     }
   }
 </style>
 </head>
 <body>
-
-<nav>
-  <button data-target="home" class="active">Home</button>
-  <button data-target="about">About Us</button>
-  <button data-target="services">Services</button>
-  <button data-target="contact">Contact</button>
-</nav>
-
-<section id="home" class="section">
+<header>
   <h1>BIM NEXUS</h1>
-  <p>Your trusted partner in BIM Engineering.</p>
-</section>
+  <nav>
+    <button class="active" data-section="modeling">3D Modeling</button>
+    <button data-section="clash">Clash Detection</button>
+    <button data-section="shop">Shop Drawings</button>
+    <button data-section="coordination">MEP Coordination</button>
+  </nav>
+</header>
 
-<section id="about" class="section">
-  <h2>About Us</h2>
-  <p>At BIM NEXUS, we provide professional BIM services including 3D modeling, coordination, shop drawings, and project management. We aim to bring innovation, accuracy, and efficiency to every project we undertake.</p>
-</section>
+<main>
+  <section id="modeling">
+    <h2>3D Modeling</h2>
+    <img src="images/modeling.jpg" alt="3D Modeling" />
+    <p>We create precise and detailed 3D BIM models for HVAC, Plumbing, Firefighting, and other MEP systems to ensure accuracy and efficiency in project execution.</p>
+  </section>
 
-<section id="services" class="section">
-  <h2>Our Services</h2>
-  <div class="services-container">
-    <div class="service-block">
-      <h3>3D Modeling</h3>
-      <img src="images/modeling.jpg" alt="3D Modeling" class="service-image" />
-      <p>Creating accurate and detailed 3D models for MEP, Architectural, and Structural disciplines to support design and construction.</p>
-    </div>
+  <section id="clash">
+    <h2>Clash Detection</h2>
+    <img src="images/clash-detection.jpg" alt="Clash Detection" />
+    <p>Using advanced software like Navisworks, we detect and resolve clashes between disciplines early to avoid costly onsite conflicts and delays.</p>
+  </section>
 
-    <div class="service-block">
-      <h3>Clash Detection & Coordination</h3>
-      <img src="images/clash-detection.jpg" alt="Clash Detection" class="service-image" />
-      <p>Detecting clashes between disciplines early to avoid costly site issues and ensure smooth project coordination.</p>
-    </div>
+  <section id="shop">
+    <h2>Shop Drawings</h2>
+    <img src="images/shop-drawings.jpg" alt="Shop Drawings" />
+    <p>We prepare detailed shop and coordination drawings compliant with project standards to guide smooth fabrication and installation processes.</p>
+  </section>
 
-    <div class="service-block">
-      <h3>Shop Drawings Preparation</h3>
-      <img src="images/shop-drawings.jpg" alt="Shop Drawings" class="service-image" />
-      <p>Preparing detailed shop drawings that comply with project specifications for fabrication and installation.</p>
-    </div>
-
-    <div class="service-block">
-      <h3>MEP Coordination & Project Management</h3>
-      <img src="images/coordination.jpg" alt="MEP Coordination" class="service-image" />
-      <p>Coordinating between disciplines and managing BIM workflows to ensure project success and timely delivery.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:contact@bimnexus.com">contact@bimnexus.com</a></p>
-  <p>Phone: +123 456 7890</p>
-</section>
-
-<footer>
-  <p>&copy; 2025 BIM NEXUS. All rights reserved.</p>
-</footer>
+  <section id="coordination">
+    <h2>MEP Coordination</h2>
+    <img src="images/mep-coordination.jpg" alt="MEP Coordination" />
+    <p>Our team collaborates with architectural and structural disciplines to ensure seamless integration of all MEP systems within the project.</p>
+  </section>
+</main>
 
 <script>
   const buttons = document.querySelectorAll('nav button');
-  const sections = [...document.querySelectorAll('.section')];
+  const sections = document.querySelectorAll('main section');
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-target');
-      document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
+      const sectionToShow = btn.getAttribute('data-section');
+
+      sections.forEach(sec => {
+        if (sec.id === sectionToShow) {
+          sec.style.display = 'flex';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
     });
   });
 
-  window.addEventListener('scroll', () => {
-    let scrollPos = window.scrollY + 100;
-    sections.forEach(section => {
-      if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-        const id = section.id;
-        buttons.forEach(b => {
-          b.classList.toggle('active', b.getAttribute('data-target') === id);
-        });
-      }
-    });
+  // عند بداية الصفحة، نعرض القسم الأول فقط (على الكمبيوتر)
+  window.onload = () => {
+    if(window.innerWidth > 768) {
+      sections.forEach((sec, idx) => {
+        sec.style.display = idx === 0 ? 'flex' : 'none';
+      });
+    }
+  };
+
+  // على الموبايل نعرض كل الأقسام عمودياً، لذلك لا نخفي الأقسام
+  window.addEventListener('resize', () => {
+    if(window.innerWidth <= 768) {
+      sections.forEach(sec => sec.style.display = 'flex');
+    } else {
+      sections.forEach((sec, idx) => {
+        sec.style.display = idx === 0 ? 'flex' : 'none';
+      });
+    }
   });
 </script>
-
 </body>
 </html>
