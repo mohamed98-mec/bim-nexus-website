@@ -27,7 +27,7 @@
       border-bottom: 2px solid #FFD700;
       padding: 10px 20px;
       text-align: center;
-      z-index: 999;
+      z-index: 1000;
     }
 
     header h1 {
@@ -48,7 +48,7 @@
       position: fixed;
       top: 80px;
       width: 100%;
-      z-index: 998;
+      z-index: 999;
     }
 
     .tab-button {
@@ -61,7 +61,8 @@
       transition: 0.3s;
     }
 
-    .tab-button:hover, .tab-button.active {
+    .tab-button:hover,
+    .tab-button.active {
       color: #FFD700;
       border-bottom: 3px solid #FFD700;
     }
@@ -79,7 +80,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      padding: 40px;
+      padding: 20px 40px;
       overflow-y: auto;
       display: none;
       animation: fadeIn 0.5s ease-in-out;
@@ -91,19 +92,29 @@
 
     h2 {
       color: #FFD700;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin-bottom: 20px;
     }
 
-    p, li {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #ddd;
+    .service-block {
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #2a2a2c;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
 
-    ul {
-      list-style: disc;
-      padding-left: 20px;
+    .service-block h3 {
+      color: #FFD700;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .service-block p {
+      color: #ddd;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     a {
@@ -134,21 +145,48 @@
   </nav>
 
   <main>
+    <!-- ABOUT -->
     <section id="about" class="tab-content active">
       <h2>About Us</h2>
       <p>At BIM NEXUS, we provide professional BIM services including 3D modeling, coordination, shop drawings, and project management. We aim to bring innovation, accuracy, and efficiency to every project we undertake.</p>
     </section>
 
+    <!-- SERVICES -->
     <section id="services" class="tab-content">
       <h2>Our Services</h2>
-      <ul>
-        <li>3D Modeling for HVAC, Firefighting, and Plumbing</li>
-        <li>Coordination and Clash Detection</li>
-        <li>Shop Drawing Preparation</li>
-        <li>Project Management Support</li>
-      </ul>
+
+      <div class="service-block">
+        <h3>1. 3D Modeling</h3>
+        <p>We provide detailed and accurate 3D models for HVAC, Firefighting, and Plumbing systems to enhance visualization and design clarity.</p>
+      </div>
+
+      <div class="service-block">
+        <h3>2. Clash Detection</h3>
+        <p>We use tools like Navisworks and Revit to detect and resolve interdisciplinary clashes early in the design process.</p>
+      </div>
+
+      <div class="service-block">
+        <h3>3. Shop Drawings</h3>
+        <p>Precise, coordinated shop drawings that are ready for execution on-site, based on BIM coordination results.</p>
+      </div>
+
+      <div class="service-block">
+        <h3>4. Revit Family Creation</h3>
+        <p>Custom, parametric Revit families based on real-world product specifications for high-detail modeling and documentation.</p>
+      </div>
+
+      <div class="service-block">
+        <h3>5. Project Coordination</h3>
+        <p>We coordinate between all trades to ensure MEP systems are seamlessly integrated with architectural and structural components.</p>
+      </div>
+
+      <div class="service-block">
+        <h3>6. As-Built Models</h3>
+        <p>We deliver LOD 400–500 models representing construction phase updates and field conditions, ensuring project lifecycle accuracy.</p>
+      </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="tab-content">
       <h2>Contact</h2>
       <p>Email: <a href="mailto:contact@bimnexus.com">contact@bimnexus.com</a></p>
@@ -158,12 +196,12 @@
 
   <script>
     const buttons = document.querySelectorAll('.tab-button');
-    const tabs = document.querySelectorAll('.tab-content');
+    const contents = document.querySelectorAll('.tab-content');
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         buttons.forEach(b => b.classList.remove('active'));
-        tabs.forEach(tab => tab.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
 
         btn.classList.add('active');
         document.getElementById(btn.dataset.tab).classList.add('active');
