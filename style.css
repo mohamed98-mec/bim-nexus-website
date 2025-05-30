@@ -1,100 +1,97 @@
-/* Import Roboto font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+/* Reset some basics */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #000; /* Black background */
-  color: #fff;            /* White text */
+  background-color: #000; /* black background */
+  color: #fff; /* white text */
   line-height: 1.6;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-header {
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000;
+  padding: 15px 0;
   text-align: center;
-  margin-bottom: 40px;
+  border-bottom: 2px solid gold;
+  z-index: 1000;
 }
 
-header h1 {
-  font-size: 3rem;
+.header h1 {
+  color: gold;
   font-weight: 700;
-  color: #D4AF37; /* Gold headline */
-  margin-bottom: 0.2em;
+  font-size: 2rem;
 }
 
-header .tagline {
-  font-size: 1.3rem;
-  color: #ccc;
+.header p {
+  color: #d4af37; /* gold accent color */
+  font-weight: 500;
+  margin-top: 5px;
 }
 
-main {
-  /* No extra styles needed here */
-}
-
-.section {
-  min-height: 100vh;             /* Full viewport height */
+.tabs {
+  position: fixed;
+  top: 70px;
+  width: 100%;
+  background-color: #000;
   display: flex;
-  flex-direction: column;
-  justify-content: center;       /* Vertically center content */
-  padding: 40px 30px;
-  margin-bottom: 0;
-  border-left: 6px solid #D4AF37; /* Gold left border */
-  background-color: #111;         /* Slightly lighter black for contrast */
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-  margin-bottom: 40px;            /* Space between sections */
+  justify-content: center;
+  border-bottom: 1px solid #444;
+  z-index: 999;
 }
 
-.section h2 {
-  color: #D4AF37;
-  font-size: 2.2rem;
-  margin-bottom: 20px;
+.tab-btn {
+  background: none;
+  border: none;
+  color: #bbb;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1rem;
   font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-.section p,
-.section ul {
+.tab-btn:hover {
+  color: gold;
+}
+
+.tab-btn.active {
+  color: gold;
+  border-bottom: 2px solid gold;
+}
+
+.tab-content {
+  padding: 120px 20px 40px; /* padding top to avoid fixed header + tabs */
+  max-width: 800px;
+  margin: auto;
+  min-height: 80vh; /* fill most of viewport height */
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+h2 {
+  color: gold;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+p, ul {
   font-size: 1.1rem;
-  max-width: 700px;
+  color: #ccc;
+  margin-bottom: 20px;
 }
 
-.section ul {
+ul {
   list-style-type: disc;
   padding-left: 20px;
-}
-
-.section ul li {
-  margin-bottom: 10px;
-}
-
-a {
-  color: #D4AF37;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-footer {
-  text-align: center;
-  border-top: 1px solid #D4AF37;
-  padding: 20px 0;
-  font-size: 0.9rem;
-  color: #777;
-  margin-top: 30px;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
 }
