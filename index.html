@@ -54,14 +54,21 @@
       font-size: 1.1rem;
       z-index: 1000;
     }
-    #whatsSection {
-      margin-top: 30px;
-      font-size: 1.2rem;
+    #whatsLink {
+      margin-top: 20px;
+    }
+    #whatsLink button {
+      background-color: #8B4513;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-
   <div class="container" id="step1">
     <h1>Welcome, HOME 🦋🤍</h1>
     <label>Please enter your nickname:</label>
@@ -76,7 +83,7 @@
     <div class="transition">Let's play a nice game ✨😉</div>
   </div>
 
-  <div class="top-message hidden" id="topMessage">All answers are about my little princess 🦋</div>
+  <div class="top-message hidden" id="questionTop">All answers are about my little princess 🦋</div>
 
   <div class="container hidden" id="question1">
     <h2>What’s my favorite flower?</h2>
@@ -107,35 +114,26 @@
   </div>
 
   <div class="container hidden" id="transition4">
-    <div class="transition">HAVE SOME PATIENCE, HOME 🦋🤍<br>LOADING......</div>
+    <div class="transition">
+      HAVE SOME PATIENCE, HOME 🦋🤍<br>
+      LOADING......
+    </div>
   </div>
 
   <div class="container hidden" id="final">
-    <h2>
-      I love you to infinity and beyond ∞<br>
-      Ever thine.<br>
-      Ever mine.<br>
-      Ever ours.
-    </h2>
-    <div class="hidden" id="whatsSection">
-      IF YOU WANNA TALK<br><br>
+    <div style="text-align: center; line-height: 2.5; font-size: 1.8rem;">
+      <div>I love you to infinity and beyond ∞</div>
+      <div>Ever thine. Ever mine. Ever ours.</div>
+    </div>
+    <div class="message hidden" id="finalMsg">IF YOU WANNA TALK</div>
+    <div id="whatsLink" class="hidden">
       <a href="https://wa.me/201001404809?text=I%20Love%20You%20Too%20%F0%9F%A4%8D" target="_blank">
-        <button style="background-color: #8B4513; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1rem;">
-          GO
-        </button>
+        <button>GO</button>
       </a>
     </div>
   </div>
 
   <script>
-    function showTopMessage() {
-      document.getElementById('topMessage').classList.remove('hidden');
-    }
-
-    function hideTopMessage() {
-      document.getElementById('topMessage').classList.add('hidden');
-    }
-
     function checkLogin() {
       const nickname = document.getElementById('nickname').value.trim().toLowerCase();
       const password = document.getElementById('password').value.trim();
@@ -144,7 +142,7 @@
         document.getElementById('transition1').classList.remove('hidden');
         setTimeout(() => {
           document.getElementById('transition1').classList.add('hidden');
-          showTopMessage();
+          document.getElementById('questionTop').classList.remove('hidden');
           document.getElementById('question1').classList.remove('hidden');
         }, 2000);
       } else {
@@ -156,11 +154,11 @@
       const flower = document.getElementById('flower').value.trim().toLowerCase();
       if (flower === 'amira') {
         document.getElementById('question1').classList.add('hidden');
-        hideTopMessage();
+        document.getElementById('questionTop').classList.add('hidden');
         document.getElementById('transition2').classList.remove('hidden');
         setTimeout(() => {
           document.getElementById('transition2').classList.add('hidden');
-          showTopMessage();
+          document.getElementById('questionTop').classList.remove('hidden');
           document.getElementById('question2').classList.remove('hidden');
         }, 5000);
       } else {
@@ -172,11 +170,11 @@
       const honey = document.getElementById('honey').value.trim().toLowerCase();
       if (honey === 'amira') {
         document.getElementById('question2').classList.add('hidden');
-        hideTopMessage();
+        document.getElementById('questionTop').classList.add('hidden');
         document.getElementById('transition3').classList.remove('hidden');
         setTimeout(() => {
           document.getElementById('transition3').classList.add('hidden');
-          showTopMessage();
+          document.getElementById('questionTop').classList.remove('hidden');
           document.getElementById('question3').classList.remove('hidden');
         }, 5000);
       } else {
@@ -186,13 +184,14 @@
 
     function showFinal() {
       document.getElementById('question3').classList.add('hidden');
-      hideTopMessage();
+      document.getElementById('questionTop').classList.add('hidden');
       document.getElementById('transition4').classList.remove('hidden');
       setTimeout(() => {
         document.getElementById('transition4').classList.add('hidden');
         document.getElementById('final').classList.remove('hidden');
         setTimeout(() => {
-          document.getElementById('whatsSection').classList.remove('hidden');
+          document.getElementById('finalMsg').classList.remove('hidden');
+          document.getElementById('whatsLink').classList.remove('hidden');
         }, 10000);
       }, 5000);
     }
