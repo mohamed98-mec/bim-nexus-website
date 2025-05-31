@@ -2,191 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>For My Love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Love</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
     body {
       margin: 0;
-      font-family: 'Playfair Display', serif;
-      background: linear-gradient(135deg, #2f3e2f, #4a3b29);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: #d6c8b6;
-      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1E1D1D;
+      color: white;
       text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
       padding: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    #login, #message {
-      max-width: 400px;
-      width: 100%;
-      background: rgba(57, 49, 39, 0.95);
-      padding: 40px 30px;
-      border-radius: 25px;
-      box-shadow: 0 8px 30px rgba(25, 20, 12, 0.6);
-      position: relative;
-      z-index: 2;
-    }
-    input {
-      width: 80%;
-      padding: 14px;
-      margin: 15px 0;
-      border: 2px solid #5a6a4f;
-      border-radius: 15px;
-      font-size: 1.2em;
-      text-align: center;
-      background-color: #3a422e;
-      color: #d6c8b6;
-      transition: border-color 0.3s ease;
-    }
-    input::placeholder {
-      color: #a7a38f;
-    }
-    input:focus {
-      border-color: #8a7f5a;
-      outline: none;
-      background-color: #454c37;
-    }
-    button {
-      padding: 14px 40px;
-      font-size: 1.2em;
-      background: #5a6a4f;
-      border: none;
-      color: #d6c8b6;
-      border-radius: 20px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background 0.4s ease;
-      font-weight: 600;
-      box-shadow: 0 5px 15px rgba(90, 106, 79, 0.5);
-    }
-    button:hover {
-      background: #7a8861;
-    }
-    #error {
-      color: #bc7d54;
-      margin-top: 10px;
-      min-height: 22px;
-      font-style: italic;
     }
     h1 {
-      font-size: 2.8em;
-      margin-bottom: 0.5em;
-      letter-spacing: 1.5px;
-      color: #d6c8b6;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
-    .heart {
-      color: #bc7d54;
-      font-size: 3.5em;
-      animation: beat 1s infinite;
-      margin-top: 25px;
+    label {
+      font-size: 1.2rem;
     }
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.25); }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
     }
-
-    /* Tulip and Butterfly images */
-    .decor {
-      position: absolute;
-      z-index: 1;
-      opacity: 0.4; /* increased opacity */
-      user-select: none;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
+    .hidden {
+      display: none;
     }
-    #tulip {
-      bottom: 15px;
-      left: 20px;
-      width: 180px;  /* bigger */
-      transform: rotate(-10deg);
+    .message {
+      font-size: 1.4rem;
+      margin-top: 20px;
     }
-    #butterfly {
-      top: 15px;
-      right: 20px;
-      width: 140px; /* bigger */
-      animation: flutter 6s infinite ease-in-out;
+    .transition {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 30px 0;
     }
-    @keyframes flutter {
-      0%, 100% { transform: translateY(0) rotate(10deg); }
-      50% { transform: translateY(-15px) rotate(-10deg); }
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      #login, #message {
-        padding: 30px 20px;
-      }
-      input {
-        width: 90%;
-      }
-      button {
-        width: 90%;
-      }
-      h1 {
-        font-size: 2em;
-      }
-      .heart {
-        font-size: 2.5em;
-        margin-top: 15px;
-      }
-      #tulip {
-        width: 120px;
-        bottom: 10px;
-        left: 10px;
-      }
-      #butterfly {
-        width: 100px;
-        top: 10px;
-        right: 10px;
-      }
+    .top-message {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #1E1D1D;
+      color: #fff;
+      padding: 10px;
+      font-size: 1.1rem;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
-  <img
-    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAMAAAC+0fZpAAAAVFBMVEX////MzMzPz8/8/PwzMzMuLi7Ozs7S0tKWlpZSUlJfX1+Pj4/4+PjPz8/V1dWoqqq7u7uzs7OSkpLn5+eEhISenp7IyMhbW1vz8/NNTU05OTkzMzPe3t7KysqyLFZ4AAABq0lEQVR4nO3b7XLCIBQG4LsDMQsFqZbP//97VKViYJKR12m9mK2u17z8fPDw+roXwcAAODjvXvu9wRYN46NH6gKCLvBFGs/WWhxpA06VdQX9YoRPG87pBjw7xC3DqSicF3xxEG2SQXgLg7hPJDAHtScS4A94xoRMH7Yzgo3Dp0Gz4vhPUNRHjrWojkMCvHjhF/E3DqWPXWLyC2q5Vw0Vtk+H/7xyLGo8jz8bhMBr8wIj7CTCSqOdUvp0gDtk4xDLHKwg3UeXLQSdB8E7FHUYRk4dTADslgLyvNHPE2JSeYxNeA7Ezk3EdSwdBhxGXQDjM4eI8AfjHTlN5KOYnZrP0OCA2WQ2NKEUnwMJI3k1yDkz6+UxDY3/cMECy8GLYcCD3RjGZB6yWDXjD9xPSZT2Jwp4Io53xiA9Q7gYpn4GX7/wOQxQrg9O6vF9AqPL32dP7ASxj5gDm39jhyfV+y3QlAAAAAElFTkSuQmCC"
-    alt="Tulip"
-    id="tulip"
-    class="decor"
-  />
-  <img
-    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAV1BMVEX////MzMzPz8/Pz8/v7+/Jycn19fXr6+vp6enZ2dnY2Njv7++2traxsbGioqK7u7uhoaH4+PjR0dHy8vLw8PC0tLRwcHCYmJifn5/u7u7Hx8ezs7OyMjJQe5+RAAAAKklEQVR4nO3PQQ0AAAwDoL7/5McFYUGkUwHIDn7FhNQU0CMBUgBMA6I4BLISCAAFABSkQAAAABJRU5ErkJggg=="
-    alt="Butterfly"
-    id="butterfly"
-    class="decor"
-  />
-
-  <div id="login">
-    <h1>Welcome, my love</h1>
-    <input type="text" id="name" placeholder="Enter your nickname" autocomplete="off" />
-    <input type="password" id="password" placeholder="Enter password" autocomplete="off" />
-    <button onclick="checkLogin()">Open Message</button>
-    <div id="error"></div>
+  <div class="top-message">All answers are about my little honey 🦋</div>
+  <div class="container" id="step1">
+    <h1>Welcome, HOME 🦋🤍</h1>
+    <label>Please enter your nickname:</label>
+    <input type="text" id="nickname" placeholder="Hint: My favorite word to call you">
+    <label>Please enter your secret password:</label>
+    <input type="password" id="password" placeholder="Hint: My happiness birthday">
+    <button onclick="checkLogin()">Submit</button>
+    <div class="message" id="loginMessage"></div>
   </div>
 
-  <div id="message" style="display:none;">
-    <h1>I Love You</h1>
-    <div class="heart">❤️</div>
+  <div class="container hidden" id="transition1">
+    <div class="transition">Let's play a nice game 🎮</div>
+  </div>
+
+  <div class="container hidden" id="question1">
+    <h2>What’s my favorite flower?</h2>
+    <input type="text" id="flower" placeholder="Hint: The brightest soul lighting up my heart">
+    <button onclick="checkFlower()">Submit</button>
+    <div class="message" id="flowerMessage"></div>
+  </div>
+
+  <div class="container hidden" id="transition2">
+    <div class="transition">You got this, my today and all of my tomorrows 🤎<br><span style="font-size:1.2rem;">(Next is loading...)</span></div>
+  </div>
+
+  <div class="container hidden" id="question2">
+    <h2>What’s my favorite type of honey?</h2>
+    <input type="text" id="honey" placeholder="Hint: The sweetest person in my world">
+    <button onclick="checkHoney()">Submit</button>
+    <div class="message" id="honeyMessage"></div>
+  </div>
+
+  <div class="container hidden" id="transition3">
+    <div class="transition">You got this,<br>FYI: “You are the part of me I didn’t know was missing.” 🤎<br><span style="font-size:1.2rem;">(Next is loading...)</span></div>
+  </div>
+
+  <div class="container hidden" id="question3">
+    <h2>What’s your favorite part of the day?</h2>
+    <input type="text" id="part" placeholder="Hint: The part of the day that feels like us">
+    <button onclick="showFinal()">Submit</button>
+  </div>
+
+  <div class="container hidden" id="transition4">
+    <div class="transition">HAVE SOME PATIENCE, LOADING......</div>
+  </div>
+
+  <div class="container hidden" id="final">
+    <h2>I love you endlessly 🤎<br>Ever thine. Ever mine. Ever ours.</h2>
   </div>
 
   <script>
     function checkLogin() {
-      const name = document.getElementById('name').value.trim();
+      const nickname = document.getElementById('nickname').value.trim().toLowerCase();
       const password = document.getElementById('password').value.trim();
-      const errorDiv = document.getElementById('error');
-
-      if (name === 'Hon' && password === '139') {
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('message').style.display = 'block';
-        errorDiv.textContent = '';
+      if (nickname === 'hon' && password === '139') {
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('transition1').classList.remove('hidden');
+        setTimeout(() => {
+          document.getElementById('transition1').classList.add('hidden');
+          document.getElementById('question1').classList.remove('hidden');
+        }, 4000);
       } else {
-        errorDiv.textContent = 'Oops! Wrong nickname or password. Try again.';
+        document.getElementById('loginMessage').textContent = 'Try again, Hon 🤎';
       }
+    }
+
+    function checkFlower() {
+      const flower = document.getElementById('flower').value.trim().toLowerCase();
+      if (flower === 'amira') {
+        document.getElementById('question1').classList.add('hidden');
+        document.getElementById('transition2').classList.remove('hidden');
+        setTimeout(() => {
+          document.getElementById('transition2').classList.add('hidden');
+          document.getElementById('question2').classList.remove('hidden');
+        }, 10000);
+      } else {
+        document.getElementById('flowerMessage').textContent = 'Try again, Hon 🤎';
+      }
+    }
+
+    function checkHoney() {
+      const honey = document.getElementById('honey').value.trim().toLowerCase();
+      if (honey === 'amira') {
+        document.getElementById('question2').classList.add('hidden');
+        document.getElementById('transition3').classList.remove('hidden');
+        setTimeout(() => {
+          document.getElementById('transition3').classList.add('hidden');
+          document.getElementById('question3').classList.remove('hidden');
+        }, 6000);
+      } else {
+        document.getElementById('honeyMessage').textContent = 'Try again, Hon 🤎';
+      }
+    }
+
+    function showFinal() {
+      document.getElementById('question3').classList.add('hidden');
+      document.getElementById('transition4').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('transition4').classList.add('hidden');
+        document.getElementById('final').classList.remove('hidden');
+      }, 5000);
     }
   </script>
 </body>
