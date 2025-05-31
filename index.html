@@ -17,10 +17,11 @@
       margin: auto;
       padding: 20px;
     }
-    h1 {
-      font-size: 2.5rem;
+    h1, h2 {
       margin-bottom: 10px;
     }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
     label {
       font-size: 1.2rem;
     }
@@ -53,28 +54,36 @@
       padding: 10px;
       font-size: 1.1rem;
       z-index: 1000;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="top-message">All answers are about my little honey 🦋</div>
+  <div class="top-message" id="topMessage">All answers are about my little honey 🦋</div>
+
   <div class="container" id="step1">
     <h1>Welcome, HOME 🦋🤍</h1>
     <label>Please enter your nickname:</label>
-    <input type="text" id="nickname" placeholder="Hint: My favorite word to call you">
+    <input type="text" id="nickname" placeholder="Hint: My favorite word to call you - Three characters">
     <label>Please enter your secret password:</label>
-    <input type="password" id="password" placeholder="Hint: My happiness birthday">
+    <input type="password" id="password" placeholder="Hint: My happiness birthday - Three characters">
     <button onclick="checkLogin()">Submit</button>
     <div class="message" id="loginMessage"></div>
+    <div class="message" id="usernameHint" style="color:#d4af37; font-weight:bold; display:none; margin-top:10px;">
+      Remember: Username consists of 3 characters!
+    </div>
+    <div class="message" id="passwordHint" style="color:#d4af37; font-weight:bold; display:none; margin-top:10px;">
+      Remember: Password consists of 3 characters!
+    </div>
   </div>
 
   <div class="container hidden" id="transition1">
-    <div class="transition">Let's play a nice game 🎮</div>
+    <div class="transition">Let's play a nice game ✨😉</div>
   </div>
 
   <div class="container hidden" id="question1">
     <h2>What’s my favorite flower?</h2>
-    <input type="text" id="flower" placeholder="Hint: The brightest soul lighting up my heart">
+    <input type="text" id="flower" placeholder="Hint: The brightest soul lighting up my heart - Five characters">
     <button onclick="checkFlower()">Submit</button>
     <div class="message" id="flowerMessage"></div>
   </div>
@@ -85,7 +94,7 @@
 
   <div class="container hidden" id="question2">
     <h2>What’s my favorite type of honey?</h2>
-    <input type="text" id="honey" placeholder="Hint: The sweetest person in my world">
+    <input type="text" id="honey" placeholder="Hint: The sweetest person in my world - Five characters">
     <button onclick="checkHoney()">Submit</button>
     <div class="message" id="honeyMessage"></div>
   </div>
@@ -101,52 +110,77 @@
   </div>
 
   <div class="container hidden" id="transition4">
-    <div class="transition">HAVE SOME PATIENCE, LOADING......</div>
+    <div class="transition" style="font-size:1.8rem;">
+      Please be patient... LOADING YOUR MESSAGE 🤗
+    </div>
   </div>
 
   <div class="container hidden" id="final">
-    <h2>I love you endlessly 🤎<br>Ever thine. Ever mine. Ever ours.</h2>
+    <h2>
+      I love you to infinity and beyond ∞<br>
+      Ever thine. Ever mine. Ever ours.
+    </h2>
   </div>
 
   <script>
+    function showTopMessage(show) {
+      document.getElementById('topMessage').style.display = show ? 'block' : 'none';
+    }
+
     function checkLogin() {
-      const nickname = document.getElementById('nickname').value.trim().toLowerCase();
-      const password = document.getElementById('password').value.trim();
-      if (nickname === 'hon' && password === '139') {
+      const nick = document.getElementById('nickname').value.trim().toLowerCase();
+      const pass = document.getElementById('password').value.trim();
+      if (nick === 'hon' && pass === '139') {
+        document.getElementById('loginMessage').textContent = '';
+        document.getElementById('usernameHint').style.display = 'none';
+        document.getElementById('passwordHint').style.display = 'none';
+
         document.getElementById('step1').classList.add('hidden');
         document.getElementById('transition1').classList.remove('hidden');
+        showTopMessage(false);
         setTimeout(() => {
           document.getElementById('transition1').classList.add('hidden');
           document.getElementById('question1').classList.remove('hidden');
-        }, 4000);
+          showTopMessage(true);
+        }, 2000);
       } else {
         document.getElementById('loginMessage').textContent = 'Try again, Hon 🤎';
+        document.getElementById('usernameHint').style.display = 'block';
+        document.getElementById('passwordHint').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('usernameHint').style.display = 'none';
+          document.getElementById('passwordHint').style.display = 'none';
+        }, 10000);
       }
     }
 
     function checkFlower() {
-      const flower = document.getElementById('flower').value.trim().toLowerCase();
-      if (flower === 'amira') {
+      const f = document.getElementById('flower').value.trim().toLowerCase();
+      if (f === 'amira') {
         document.getElementById('question1').classList.add('hidden');
         document.getElementById('transition2').classList.remove('hidden');
+        showTopMessage(false);
         setTimeout(() => {
           document.getElementById('transition2').classList.add('hidden');
           document.getElementById('question2').classList.remove('hidden');
-        }, 10000);
+          showTopMessage(true);
+        }, 5000);
       } else {
         document.getElementById('flowerMessage').textContent = 'Try again, Hon 🤎';
       }
     }
 
     function checkHoney() {
-      const honey = document.getElementById('honey').value.trim().toLowerCase();
-      if (honey === 'amira') {
+      const h = document.getElementById('honey').value.trim().toLowerCase();
+      if (h === 'amira') {
         document.getElementById('question2').classList.add('hidden');
         document.getElementById('transition3').classList.remove('hidden');
+        showTopMessage(false);
         setTimeout(() => {
           document.getElementById('transition3').classList.add('hidden');
           document.getElementById('question3').classList.remove('hidden');
-        }, 6000);
+          showTopMessage(true);
+        }, 5000);
       } else {
         document.getElementById('honeyMessage').textContent = 'Try again, Hon 🤎';
       }
@@ -155,6 +189,7 @@
     function showFinal() {
       document.getElementById('question3').classList.add('hidden');
       document.getElementById('transition4').classList.remove('hidden');
+      showTopMessage(false);
       setTimeout(() => {
         document.getElementById('transition4').classList.add('hidden');
         document.getElementById('final').classList.remove('hidden');
