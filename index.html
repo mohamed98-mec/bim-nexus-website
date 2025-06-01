@@ -1,200 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Love</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Little Princess</title>
   <style>
     body {
-      margin: 0;
+      background-color: #000;
+      color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #1E1D1D;
-      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       text-align: center;
     }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    label {
-      font-size: 1.2rem;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: none;
-    }
-    .hidden {
-      display: none;
-    }
     .message {
-      font-size: 1.4rem;
-      margin-top: 20px;
-    }
-    .transition {
-      font-size: 2rem;
-      font-weight: bold;
-      margin: 30px 0;
-    }
-    .top-message {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #1E1D1D;
-      color: #fff;
-      padding: 10px;
-      font-size: 1.1rem;
-      z-index: 1000;
-    }
-    #whatsLink {
-      margin-top: 20px;
-    }
-    #whatsLink button {
-      background-color: #8B4513;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      cursor: pointer;
+      line-height: 2.5;
+      font-size: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="step1">
-    <h1>Welcome, HOME 🦋🤍</h1>
-    <label>Please enter your nickname:</label>
-    <input type="text" id="nickname" placeholder="Hint: My favorite word to call you - 3 characters">
-    <label>Please enter your secret password:</label>
-    <input type="password" id="password" placeholder="Hint: My happiness birthday - 3 characters">
-    <button onclick="checkLogin()">Submit</button>
-    <div class="message" id="loginMessage"></div>
-  </div>
-
-  <div class="container hidden" id="transition1">
-    <div class="transition">Let's play a nice game ✨😉</div>
-  </div>
-
-  <div class="top-message hidden" id="questionTop">All answers are about my little princess 🦋</div>
-
-  <div class="container hidden" id="question1">
-    <h2>What’s my favorite flower?</h2>
-    <input type="text" id="flower" placeholder="Hint: The brightest soul lighting up my heart - 5 characters">
-    <button onclick="checkFlower()">Submit</button>
-    <div class="message" id="flowerMessage"></div>
-  </div>
-
-  <div class="container hidden" id="transition2">
-    <div class="transition">You got this, my today and all of my tomorrows 🤎<br><span style="font-size:1.2rem;">(Next is loading...)</span></div>
-  </div>
-
-  <div class="container hidden" id="question2">
-    <h2>What’s my favorite type of honey?</h2>
-    <input type="text" id="honey" placeholder="Hint: The sweetest person in my world - 5 characters">
-    <button onclick="checkHoney()">Submit</button>
-    <div class="message" id="honeyMessage"></div>
-  </div>
-
-  <div class="container hidden" id="transition3">
-    <div class="transition">You got this,<br>FYI: “You are the part of me I didn’t know was missing.” 🤎<br><span style="font-size:1.2rem;">(Next is loading...)</span></div>
-  </div>
-
-  <div class="container hidden" id="question3">
-    <h2>What’s your favorite part of the day?</h2>
-    <input type="text" id="part" placeholder="Hint: The part of the day that feels like us">
-    <button onclick="showFinal()">Submit</button>
-  </div>
-
-  <div class="container hidden" id="transition4">
-    <div class="transition">
-      HAVE SOME PATIENCE, HOME 🦋🤍<br>
-      LOADING......
-    </div>
-  </div>
-
-  <div class="container hidden" id="final">
-    <div style="text-align: center; line-height: 1.6; font-size: 0.9rem;">
-      <div>I love you to infinity and beyond ∞</div>
-      <div>Ever thine. Ever mine. Ever ours.</div>
-    </div>
-    <div class="message hidden" id="finalMsg">IF YOU WANNA TALK</div>
-    <div id="whatsLink" class="hidden">
-      <a href="https://wa.me/201001404809?text=I%20Love%20You%20Too%20%F0%9F%A4%8D" target="_blank">
-        <button>GO</button>
-      </a>
-    </div>
+  <div class="message">
+    <div>I love you to infinity and beyond ∞</div>
+    <div>Ever thine. Ever mine. Ever ours.</div>
   </div>
 
   <script>
-    function checkLogin() {
-      const nickname = document.getElementById('nickname').value.trim().toLowerCase();
-      const password = document.getElementById('password').value.trim();
-      if (nickname === 'hon' && password === '139') {
-        document.getElementById('step1').classList.add('hidden');
-        document.getElementById('transition1').classList.remove('hidden');
-        setTimeout(() => {
-          document.getElementById('transition1').classList.add('hidden');
-          document.getElementById('questionTop').classList.remove('hidden');
-          document.getElementById('question1').classList.remove('hidden');
-        }, 2000);
-      } else {
-        document.getElementById('loginMessage').textContent = 'Try again, Hon 🤎';
-      }
-    }
-
-    function checkFlower() {
-      const flower = document.getElementById('flower').value.trim().toLowerCase();
-      if (flower === 'amira') {
-        document.getElementById('question1').classList.add('hidden');
-        document.getElementById('questionTop').classList.add('hidden');
-        document.getElementById('transition2').classList.remove('hidden');
-        setTimeout(() => {
-          document.getElementById('transition2').classList.add('hidden');
-          document.getElementById('questionTop').classList.remove('hidden');
-          document.getElementById('question2').classList.remove('hidden');
-        }, 5000);
-      } else {
-        document.getElementById('flowerMessage').textContent = 'Try again, Hon 🤎';
-      }
-    }
-
-    function checkHoney() {
-      const honey = document.getElementById('honey').value.trim().toLowerCase();
-      if (honey === 'amira') {
-        document.getElementById('question2').classList.add('hidden');
-        document.getElementById('questionTop').classList.add('hidden');
-        document.getElementById('transition3').classList.remove('hidden');
-        setTimeout(() => {
-          document.getElementById('transition3').classList.add('hidden');
-          document.getElementById('questionTop').classList.remove('hidden');
-          document.getElementById('question3').classList.remove('hidden');
-        }, 5000);
-      } else {
-        document.getElementById('honeyMessage').textContent = 'Try again, Hon 🤎';
-      }
-    }
-
-    function showFinal() {
-      document.getElementById('question3').classList.add('hidden');
-      document.getElementById('questionTop').classList.add('hidden');
-      document.getElementById('transition4').classList.remove('hidden');
-      setTimeout(() => {
-        document.getElementById('transition4').classList.add('hidden');
-        document.getElementById('final').classList.remove('hidden');
-        setTimeout(() => {
-          document.getElementById('finalMsg').classList.remove('hidden');
-          document.getElementById('whatsLink').classList.remove('hidden');
-        }, 10000);
-      }, 5000);
-    }
+    window.onload = function () {
+      alert("Hey you 👀 Stop scrolling and open your books! Exams won't pass themselves ya know 😏📚💪 Love you!");
+    };
   </script>
 </body>
 </html>
