@@ -2,37 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Little Princess</title>
+  <title>Focus Reminder</title>
   <style>
     body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
+      background-color: #000;
+      color: white;
+      font-family: 'Arial', sans-serif;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
       text-align: center;
+      transition: opacity 2s ease;
     }
-    .message {
-      line-height: 2.5;
+    #message {
       font-size: 1.5rem;
+      line-height: 2;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="message">
-    <div>I love you to infinity and beyond ∞</div>
-    <div>Ever thine. Ever mine. Ever ours.</div>
+  <div id="message">
+    This is not a magic site, Honey 😏🤍<br>
+    Go study 📖, I am watching you 👀
   </div>
 
   <script>
-    window.onload = function () {
-      alert("Hey you 👀 Stop scrolling and open your books! Exams won't pass themselves ya know 😏📚💪 Love you!");
-    };
+    setTimeout(() => {
+      document.getElementById("message").innerHTML = "BYE, HON 🦋🤍";
+    }, 20000); // بعد 20 ثانية
+
+    setTimeout(() => {
+      document.body.style.opacity = "0"; // تأثير الاختفاء
+    }, 23000); // بعد 3 ثواني من ظهور "BYE, HON"
+
+    setTimeout(() => {
+      window.close(); // يغلق الموقع
+    }, 26000); // بعد 3 ثواني إضافية
   </script>
 </body>
 </html>
